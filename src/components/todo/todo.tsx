@@ -1,21 +1,16 @@
+import { CSSProperties } from "react"
 import iTodo from "../../interfaces/todo"
 import Bin from "./Bin.svg"
 import CheckboxOff from "./Checkbox_Off.svg"
 import CheckboxOn from "./Checkbox_On.svg"
-import { CSSProperties, useEffect, useLayoutEffect } from "react"
 
 const main: CSSProperties = {
-    display: 'flex'
-}
-
-const bin: CSSProperties = {
-    width: '40px',
-    fill: '#F48889'
+    display: 'flex',
+    alignItems: 'center'
 }
 
 const checkBox: CSSProperties = {
-    width: '40px',
-    marginLeft: '40px'
+    marginLeft: '40px',
 }
 
 const text = (completed: boolean): CSSProperties => {
@@ -26,16 +21,21 @@ const text = (completed: boolean): CSSProperties => {
     return style
 }
 
-const Todo = (prop: iTodo) => {
+interface Props {
+    todo: iTodo,
+    delTodo: (todo: iTodo) => void,
+    toggleTodo: (todo: iTodo) => void
+}
 
+const Todo = ({ todo, delTodo, toggleTodo }: Props) => {    
     return (
         <>
             <div style={main}>
-                <img src={Bin} style={bin} />
-                { prop.completed ? 
-                <img src={CheckboxOn} style={checkBox} /> :
-                <img src={CheckboxOff} style={checkBox} /> }
-                <p style={ text(prop.completed) }>{ prop.text }</p>
+                <img src={Bin} className="svg" onClick={() => delTodo(todo)} />
+                { todo.completed ? 
+                <img src={CheckboxOn} style={checkBox} className="svg" onClick={() => toggleTodo(todo)} /> :
+                <img src={CheckboxOff} style={checkBox} className="svg" onClick={() => toggleTodo(todo)} /> }
+                <div style={ text(todo.completed) } className="label">{ todo.text }</div>
             </div>
         </>
     )

@@ -1,26 +1,31 @@
-import { CSSProperties, useEffect } from 'react';
+import { CSSProperties } from 'react';
 import iTodo from '../interfaces/todo';
 import Todo from './todo';
 
 const main: CSSProperties = {
-    backgroundColor: '#242424',
-    boxShadow: '4px 12px 24px rgba(0, 0, 0, 0.25)',
     padding: '80px 160px',
-    borderRadius: '32px'
+    borderRadius: '32px',
 }
 
-const Surface = (prop: iTodo[]) => {
+interface Props {
+    todos: iTodo[],
+    delTodo: (todo: iTodo) => void,
+    toggleTodo: (todo: iTodo) => void
+}
+
+const Surface = ({ todos, delTodo, toggleTodo }: Props) => {
     return (
         <>
-            <div style={main}>
-                <h1>Titolo</h1>
+            <div style={main} className="shadow bg-surface main">
+                <div className='title' style={{ marginBottom: '64px' }}>Titolo</div>
 
-                {Object.values(prop).map((todo: iTodo) => {
-                    return <Todo {...todo} />
+                {todos.map((todo: iTodo, i: number) => {
+                    return <div key={i} style={i != todos.length - 1 ? { marginBottom: '40px' } : {}}><Todo key={todo.id} todo={todo} delTodo={delTodo} toggleTodo={toggleTodo} /></div>
                 })}
             </div>
         </>
     )
 }
+
 
 export default Surface

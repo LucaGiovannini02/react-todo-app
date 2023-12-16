@@ -12,20 +12,86 @@ code {
     monospace;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 #root {
   background-color: #1F1F1F;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
+  min-height: 100%;
+  padding: 90px;
+  box-sizing: border-box;
 }
 
-h1 {
-  font-size: 40px;
-  fill: #F48889;
+.main {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-p {
+* {
+  color: white;
+}
+
+.title {
+  font-family: 'Inter', sans-serif;
+  font-size: 54px;
+  font-weight: 700;
+}
+
+.label {
   font-family: 'Inter', sans-serif;
   font-size: 17px;
+  font-weight: 400;
+}
+
+.label-medium {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.bg-surface {
+  background-color: #242424
+}
+
+.bg-primary {
+  background-color: #716FB2;
+}
+
+.shadow {
+  box-shadow: 4px 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.svg {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+button {
+  border-radius: 32px;
+  padding: 8px 32px;
+  background-color: #716FB2;
+  box-shadow: 4px 12px 24px rgba(0, 0, 0, 0.25);
+  border: none;
+  outline: none;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+textarea {
+  height: 155px;
+  width: 429px;
+  resize: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  margin-bottom: 24px;
 }
