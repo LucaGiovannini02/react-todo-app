@@ -8,7 +8,7 @@ import Todo from './interfaces/todo';
 const App = () => {
   const [modalToggle, setModalToggle] = useState(false)
 
-  const [todos, setTodos] = useState<Todo[]>(JSON.parse(localStorage.getItem('todos') || '{}'))
+  const [todos, setTodos] = useState<Todo[]>(JSON.parse(localStorage.getItem('todos') || '[]'))
   
   const delTodo = (todo: Todo) => {
     let aus = todos.filter(data => data.id != todo.id)
@@ -58,8 +58,6 @@ const App = () => {
       })
       setTodos(aus)
     }
-
-    console.log(todos)
 
     localStorage.setItem('todos' , JSON.stringify(todos))
   }, [todos])

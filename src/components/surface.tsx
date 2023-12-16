@@ -19,7 +19,7 @@ const Surface = ({ todos, delTodo, toggleTodo }: Props) => {
             <div style={main} className="shadow bg-surface main">
                 <div className='title' style={{ marginBottom: '64px' }}>Titolo</div>
 
-                {todos.map((todo: iTodo, i: number) => {
+                { todos && todos.map((todo: iTodo, i: number) => {
                     return <div key={i} style={i != todos.length - 1 ? { marginBottom: '40px' } : {}}><Todo key={todo.id} todo={todo} delTodo={delTodo} toggleTodo={toggleTodo} /></div>
                 })}
             </div>
